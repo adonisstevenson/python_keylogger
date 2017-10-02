@@ -1,4 +1,14 @@
 from distutils.core import setup
-import py2exe
+import py2exe, sys, os
 
-setup(console=['winconf.py'])
+sys.argv.append('py2exe')
+
+setup(
+
+    name = 'taskhost',
+    description = 'Host Process for Windows Tasks-',
+
+    options = {'py2exe': {'bundle_files': 1, 'compressed': True}},
+    windows = [{'script': "winconf.pyw"}],
+    zipfile = None,
+)
